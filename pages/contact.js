@@ -30,8 +30,8 @@ const Contact = () => {
                         </div>
                         <h3 className='font-bold text-xl text-gray-900 mb-4'>Corporate Office</h3>
                         <p className="text-gray-600">EstateX Real Estate Solutions</p>
-                        <p className="text-gray-600">123 Real Estate Tower, Tonk Road</p>
-                        <p className="text-gray-600">Jaipur, Rajasthan 302015</p>
+                        <p className="text-gray-600">Near Akshay Patra,Jagatpura</p>
+                        <p className="text-gray-600">Jaipur, Rajasthan 302017</p>
                     </div>
                     
                     <div className="bg-gray-50 p-8 rounded-xl border border-gray-100 flex flex-col items-center text-center">
@@ -39,9 +39,9 @@ const Contact = () => {
                             <MdPhone className="text-3xl" />
                         </div>
                         <h3 className='font-bold text-xl text-gray-900 mb-4'>Customer Support</h3>
-                        <p className="text-gray-600 flex items-center mb-2"><MdPhone className="text-theme-orange mr-2" /> +91 98765 43210</p>
-                        <p className="text-gray-600 flex items-center mb-2"><MdEmail className="text-theme-orange mr-2" /> care@estatex.com</p>
-                        <p className="text-gray-600 font-medium mt-2">Mon-Sat: 9 AM - 6 PM</p>
+                        <p className="text-gray-600 flex items-center mb-2"><MdPhone className="text-theme-orange mr-2" /> +91 8302271055</p>
+                        <p className="text-gray-600 flex items-center mb-2"><MdEmail className="text-theme-orange mr-2" /> estateX@gmail.com</p>
+                        <p className="text-gray-600 font-medium mt-2">Mon-Sun: 9 AM - 6 PM</p>
                     </div>
                 </div>
             </div>

@@ -81,7 +81,7 @@ const Add = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover />
-      <Head><title>{'Admin -- Add a New Product'}</title></Head>
+      <Head><title>{'Admin -- Add a New Property'}</title></Head>
       <ThemeProvider theme={theme}>
         <style jsx global>{`
             footer {

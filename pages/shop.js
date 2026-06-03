@@ -73,7 +73,11 @@ const Shop = ({ products }) => {
 
 export async function getServerSideProps(context) {
     try {
-        if (!mongoose.connections[0].readyState) {
+        if (!process.env.MONGODB_URI) {
+            console.warn("MONGODB_URI is not defined.");
+            return { props: { products: [] } };
+        }
+        if (mongoose.connection.readyState !== 1) {
             await mongoose.connect(process.env.MONGODB_URI, {
                 serverSelectionTimeoutMS: 5000
             })

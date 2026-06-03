@@ -9,7 +9,7 @@ import Head from "next/head";
 
 export default function Index() {
     return (
-        <><Head><title>{'Clox -- Admin Panel'}</title></Head>
+        <><Head><title>{'EstateX -- Admin Panel'}</title></Head>
             <ThemeProvider theme={theme}>
                 <style jsx global>{`
             footer {

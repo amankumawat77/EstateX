@@ -14,7 +14,7 @@ import Link from "next/link"
 
 const AllProducts = ({ products }) => {
   return (
-    <BaseCard title="All Products">
+    <BaseCard title="All Properties">
       <Table
         aria-label="simple table"
         sx={{

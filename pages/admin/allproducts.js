@@ -11,7 +11,7 @@ import mongoose from "mongoose";
 const Allproducts = ({products}) => {
 
   return (
-    <><Head><title>{'Admin -- View All Products'}</title></Head>
+    <><Head><title>{'Admin -- View All Properties'}</title></Head>
     <ThemeProvider theme={theme}>
       <style jsx global>{`
             footer {
@@ -34,10 +34,25 @@ const Allproducts = ({products}) => {
 }
 
 export async function getServerSideProps(context) {
-  await mongoose.connect(process.env.MONGODB_URI)
-  let products = await Product.find()
-  return {
-      props: { products: JSON.parse(JSON.stringify(products)) } // will be passed to the page component as props
+  try {
+    if (!process.env.MONGODB_URI) {
+      console.warn("MONGODB_URI is not defined.");
+      return { props: { products: [] } };
+    }
+    if (mongoose.connection.readyState !== 1) {
+      await mongoose.connect(process.env.MONGODB_URI, {
+          serverSelectionTimeoutMS: 5000
+      })
+    }
+    let products = await Product.find()
+    return {
+        props: { products: JSON.parse(JSON.stringify(products)) } // will be passed to the page component as props
+    }
+  } catch (error) {
+    console.error("Database connection failed:", error.message);
+    return {
+        props: { products: [] }
+    }
   }
 }
 

@@ -23,7 +23,7 @@ export default function Home({ products }) {
         
         <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-            Discover Your Perfect Plot in Jaipur
+            Discover Your Perfect Plot 
           </h1>
           <p className="text-lg md:text-xl text-white mb-8 drop-shadow-md">
             JDA Approved | Housing Board | RERA Registered | Nagarpalika Approved
@@ -127,12 +127,17 @@ export default function Home({ products }) {
 
 export async function getServerSideProps(context) {
   try {
-    if (!mongoose.connections[0].readyState) {
+    if (!process.env.MONGODB_URI) {
+      console.warn("MONGODB_URI is not defined.");
+      return { props: { products: [] } };
+    }
+    
+    if (mongoose.connection.readyState !== 1) {
       await mongoose.connect(process.env.MONGODB_URI, {
         serverSelectionTimeoutMS: 5000
-      })
+      });
     }
-    let products = await Product.find().limit(4)
+    let products = await Product.find().limit(4);
     return {
       props: { products: JSON.parse(JSON.stringify(products)) }
     }

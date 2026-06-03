@@ -5,12 +5,12 @@ const Menuitems = [
     href: "/admin",
   },
   {
-    title: "Add Products",
+    title: "Add Property",
     icon: "plus-circle",
     href: "/admin/add",
   },
   {
-    title: "View Products",
+    title: "View Properties",
     icon: "eye",
     href: "/admin/allproducts",
   },
@@ -20,7 +20,7 @@ const Menuitems = [
     href: "/admin/imageuploder",
   },
   {
-    title: "Orders",
+    title: "Inquiries",
     icon: "shopping-cart",
     href: "/admin/orders",
   },

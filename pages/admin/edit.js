@@ -71,7 +71,7 @@ const Edit = ({ product }) => {
     })
     let response = await res.json()
     if (response.succses) {
-      toast.success('Product Edited Succsesfully!', {
+      toast.success('Property Edited Succsesfully!', {
         position: "top-left",
         autoClose: 3000,
         hideProgressBar: false,
@@ -95,7 +95,7 @@ const Edit = ({ product }) => {
         pauseOnFocusLoss
         draggable
         pauseOnHover />
-      <Head><title>{'Admin -- Edit Product'}</title></Head>
+      <Head><title>{'Admin -- Edit Property'}</title></Head>
       <ThemeProvider theme={theme}>
         <style jsx global>{`
             footer {
@@ -108,7 +108,7 @@ const Edit = ({ product }) => {
         <FullLayout>
           <Grid container spacing={0}>
             <Grid item xs={12} lg={12}>
-              <BaseCard title="Edit Product">
+              <BaseCard title="Edit Property">
                 <Stack spacing={3}>
                   <TextField onChange={onchange} value={title} name="title" label="Title" variant="outlined" />
                   <TextField onChange={onchange} value={slug} name="slug" label="Slug" variant="outlined" />
@@ -131,12 +131,25 @@ const Edit = ({ product }) => {
 }
 
 export async function getServerSideProps(context) {
-  if (!mongoose.connections[0].readyState) {
-    await mongoose.connect(process.env.MONGODB_URI)
-  }
-  let product = await Product.findById(context.query.id)
-  return {
-    props: { product: JSON.parse(JSON.stringify(product)) } // will be passed to the page component as props
+  try {
+    if (!process.env.MONGODB_URI) {
+      console.warn("MONGODB_URI is not defined.");
+      return { props: { product: null } };
+    }
+    if (mongoose.connection.readyState !== 1) {
+      await mongoose.connect(process.env.MONGODB_URI, {
+          serverSelectionTimeoutMS: 5000
+      })
+    }
+    let product = await Product.findById(context.query.id)
+    return {
+      props: { product: JSON.parse(JSON.stringify(product)) }
+    }
+  } catch (error) {
+    console.error("Database connection failed:", error.message);
+    return {
+      props: { product: null }
+    }
   }
 }
 
