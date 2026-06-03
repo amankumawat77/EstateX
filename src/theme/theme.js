@@ -7,15 +7,15 @@ import typography from "./Typoraphy";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#03c9d7",
-      light: "#e5fafb",
-      dark: "#05b2bd",
+      main: "#F94A13",
+      light: "#FFDEC5",
+      dark: "#CC380A",
       contrastText: "#ffffff",
     },
     secondary: {
-      main: "#fb9678",
-      light: "#fcf1ed",
-      dark: "#e67e5f",
+      main: "#111827",
+      light: "#374151",
+      dark: "#030712",
       contrastText: "#ffffff",
     },
     success: {
@@ -59,7 +59,7 @@ const theme = createTheme({
       hover: "rgba(0, 0, 0, 0.03)",
     },
     background: {
-      default: "#fafbfb",
+      default: "#F8F4E9",
     },
   },
   mixins: {

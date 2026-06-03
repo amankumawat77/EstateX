@@ -52,7 +52,7 @@ const Add = () => {
     })
     let response = await res.json()
     if (response.succses) {
-      toast.success('Product added Succsesfully!', {
+      toast.success('Property added successfully!', {
         position: "top-left",
         autoClose: 3000,
         hideProgressBar: false,
@@ -60,6 +60,11 @@ const Add = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
+      });
+    } else {
+      toast.error('Failed to add property: ' + (response.error || 'Unknown error'), {
+        position: "top-left",
+        autoClose: 5000,
       });
     }
   }
@@ -89,18 +94,18 @@ const Add = () => {
         <FullLayout>
           <Grid container spacing={0}>
             <Grid item xs={12} lg={12}>
-              <BaseCard title="Add a Product">
+              <BaseCard title="Add a New Property">
                 <Stack spacing={3}>
-                  <TextField onChange={onchange} value={title} name="title" label="Title" variant="outlined" />
-                  <TextField onChange={onchange} value={slug} name="slug" label="Slug" variant="outlined" />
-                  <TextField onChange={onchange} value={description} name="description" label="Description" multiline rows={4} />
-                  <TextField onChange={onchange} value={img} name="image" label="Image" variant="outlined" />
-                  <TextField onChange={onchange} value={price} name="price" label="Price" variant="outlined" />
-                  <TextField onChange={onchange} value={availableQty} name="availableQty" label="Available Quantity" variant="outlined" />
+                  <TextField onChange={onchange} value={title} name="title" label="Property Title" variant="outlined" />
+                  <TextField onChange={onchange} value={slug} name="slug" label="URL Slug" variant="outlined" />
+                  <TextField onChange={onchange} value={description} name="description" label="Property Description" multiline rows={4} />
+                  <TextField onChange={onchange} value={img} name="image" label="Image URL" variant="outlined" />
+                  <TextField onChange={onchange} value={price} name="price" label="Asking Price (₹)" variant="outlined" type="number" />
+                  <TextField onChange={onchange} value={availableQty} name="availableQty" label="Number of Plots Available" variant="outlined" type="number" />
                 </Stack>
                 <br />
                 <Button onClick={submitForm} variant="contained" mt={2}>
-                  Submit
+                  Add Property
                 </Button>
               </BaseCard>
             </Grid>
